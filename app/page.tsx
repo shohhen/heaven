@@ -1,5 +1,5 @@
 // src/app/page.tsx
-import Image from 'next/image';
+import Image, {StaticImageData} from 'next/image';
 import Link from 'next/link';
 import image from '@/app/assets/hero.jpg'
 import React from "react";
@@ -26,7 +26,7 @@ const services = [
 
 
 export default function HomePage() {
-  const imageUrl: string  = image as unknown as string;
+  const imageUrl: StaticImageData  = image as StaticImageData;
 
   return (
       <main>
@@ -59,7 +59,7 @@ export default function HomePage() {
               <div className="lg:w-1/2">
                 <div className="relative h-[400px] w-full rounded-xl overflow-hidden">
                   <Image
-                      src={imageUrl}
+                      src={imageUrl.src}
                       alt="Supporting community"
                       fill
                       className="object-cover"

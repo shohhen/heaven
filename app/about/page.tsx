@@ -1,5 +1,5 @@
 // src/app/about/page.tsx
-import Image from 'next/image';
+import Image, {StaticImageData} from 'next/image';
 import image from '@/app/assets/about.jpg'
 import about1 from '@/app/assets/about1.jpg'
 import about2 from '@/app/assets/about2.jpg'
@@ -7,12 +7,12 @@ import about3 from '@/app/assets/about3.jpg'
 import about4 from '@/app/assets/about4.jpg'
 import about5 from '@/app/assets/about5.jpg'
 
-const HERO = image as string
-const ABOUT1 = about1 as string
-const ABOUT2 = about2 as string
-const ABOUT3 = about3 as string
-const ABOUT4 = about4 as string
-const ABOUT5 = about5 as string
+const HERO = image as StaticImageData
+const ABOUT1 = about1 as StaticImageData
+const ABOUT2 = about2 as StaticImageData
+const ABOUT3 = about3 as StaticImageData
+const ABOUT4 = about4 as StaticImageData
+const ABOUT5 = about5 as StaticImageData
 
 const galleryImages = [
     {
@@ -53,7 +53,7 @@ export default function AboutPage() {
                         <div className="lg:w-1/2">
                             <div className="relative h-[400px] w-full rounded-xl overflow-hidden">
                                 <Image
-                                    src={HERO}
+                                    src={HERO.src}
                                     alt="Our mission"
                                     fill
                                     className="object-cover"
