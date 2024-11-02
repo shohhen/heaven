@@ -1,8 +1,10 @@
 'use client';
 import Link from 'next/link';
 import { useState } from 'react';
-import Image from 'next/image';
+import Image, {StaticImageData} from 'next/image';
 import image from '@/public/images/Pastel_Blue_Gradient_Budget_Pie_Chart_Graph-removebg.png';
+
+const IMAGE = image as StaticImageData
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,7 +15,7 @@ export default function Header() {
                 <div className="flex justify-between items-center">
                     <div className="flex items-center">
                         <Image
-                            src={(image as string)}
+                            src={IMAGE.src}
                             alt="Supporting community"
                             className="w-16 h-auto"
                         />
