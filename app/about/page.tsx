@@ -1,11 +1,11 @@
 // src/app/about/page.tsx
 import Image from 'next/image';
-import image from '@/public/images/about.jpg'
-import about1 from '@/public/images/about1.jpg'
-import about2 from '@/public/images/about2.jpg'
-import about3 from '@/public/images/about3.jpg'
-import about4 from '@/public/images/about4.jpg'
-import about5 from '@/public/images/about5.jpg'
+import image from '@/app/assets/about.jpg'
+import about1 from '@/app/assets/about1.jpg'
+import about2 from '@/app/assets/about2.jpg'
+import about3 from '@/app/assets/about3.jpg'
+import about4 from '@/app/assets/about4.jpg'
+import about5 from '@/app/assets/about5.jpg'
 
 const galleryImages = [
     {

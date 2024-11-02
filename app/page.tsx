@@ -1,7 +1,7 @@
 // src/app/page.tsx
 import Image from 'next/image';
 import Link from 'next/link';
-import image from '@/public/images/hero.jpg'
+import image from '@/app/assets/hero.jpg'
 import React from "react";
 import PartnerBlock from "@/app/components/home/partners";
 
