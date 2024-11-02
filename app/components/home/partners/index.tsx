@@ -28,7 +28,7 @@ const PartnerBlock: React.FC = () => {
                         className="flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 p-4"
                     >
                         <Image
-                            src={partner.src}
+                            src={partner}
                             alt={'partner'}
                             className="max-h-24 max-w-full object-contain"
                         />

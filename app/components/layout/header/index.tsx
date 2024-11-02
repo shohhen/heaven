@@ -15,7 +15,7 @@ export default function Header() {
                 <div className="flex justify-between items-center">
                     <div className="flex items-center">
                         <Image
-                            src={IMAGE.src}
+                            src={IMAGE}
                             alt="Supporting community"
                             className="w-16 h-auto"
                         />
