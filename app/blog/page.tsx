@@ -8,15 +8,15 @@ export const metadata: Metadata = {
 }
 
 export default async function BlogPage() {
-    let posts = []
-    let error = null
+    const posts = await getAllPosts()
+    const error = null
 
-    try {
-        posts = await getAllPosts()
-    } catch (err) {
-        console.error('Failed to fetch posts:', err)
-        error = err instanceof Error ? err.message : 'An unexpected error occurred'
-    }
+    // try {
+    // } catch (err) {
+    //     console.error('Failed to fetch posts:', err)
+    //     error = err instanceof Error ? err.message : 'An unexpected error occurred'
+    // }
+
 
     return (
         <main className="py-20">
@@ -28,7 +28,7 @@ export default async function BlogPage() {
                 {error ? (
                     <p className="text-red-500 text-center">{error}</p>
                 ) : (
-                    <BlogList posts={posts} />
+                    <BlogList posts={posts.data} />
                 )}
             </div>
         </main>

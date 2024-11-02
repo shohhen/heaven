@@ -47,11 +47,6 @@ export default function ContactPage() {
                 message: '',
                 preferredContact: 'email'
             });
-        } catch (error) {
-            setSubmitStatus({
-                type: 'error',
-                message: 'There was an error sending your message. Please try again.'
-            });
         } finally {
             setIsSubmitting(false);
         }
@@ -67,7 +62,7 @@ export default function ContactPage() {
                         <div>
                             <h2 className="text-lg font-semibold text-red-800">Need Immediate Help?</h2>
                             <p className="text-red-700">
-                                Call our 24/7 Emergency Hotline: <span className="font-bold">+998 XX XXX XX XX</span>
+                                Call our 24/7 Emergency Hotline: <span className="font-bold">+998 93 651 18 00</span>
                             </p>
                         </div>
                     </div>
@@ -87,8 +82,7 @@ export default function ContactPage() {
                                         <Phone className="h-6 w-6 text-purple-800 mt-1 mr-4" />
                                         <div>
                                             <h3 className="font-semibold mb-1">Phone</h3>
-                                            <p className="text-gray-600">+998 XX XXX XX XX</p>
-                                            <p className="text-gray-600">+998 XX XXX XX XX</p>
+                                            <p className="text-gray-600">+998 93 651 18 00</p>
                                         </div>
                                     </div>
 

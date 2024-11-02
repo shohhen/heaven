@@ -3,9 +3,15 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @layer base {
   body {
     @apply bg-white text-gray-900;
+  }
+  :root {
+
+
+    --radius: 0.5rem
   }
 }
 
@@ -39,4 +45,18 @@
 
 .prose ol {
   @apply list-decimal list-inside mb-4;
+}
+
+.embla {
+  --slide-spacing: 1rem;
+  --slide-size: 25%;
+}
+
+.embla__viewport {
+  transition: height 0.2s;
+}
+
+/* Adjust this duration to control the speed of slide transitions */
+.embla__container {
+  transition: transform 0.5s ease-in-out;
 }

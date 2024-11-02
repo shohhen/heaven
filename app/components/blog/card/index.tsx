@@ -38,7 +38,6 @@ export default function BlogCard({ post }: BlogCardProps) {
                         <span className="mr-4">{formattedDate}</span>
                         <span>{post.read_time} min read</span>
                     </div>
-                    <span>{post.views_count} views</span>
                 </div>
             </div>
         </article>

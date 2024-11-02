@@ -5,19 +5,27 @@ export interface Meta {
 }
 
 export enum USERS {
-    1 = "Contributor",
-    2 = "Editor",
-    3 = "Admin"
+    Contributor = 1,
+    Editor = 2,
+    Admin = 3
+}
+
+export interface PostsResponse {
+    data: Posts[];
+    page: number;
+    pages: number;
+    total: number;
 }
 
 export interface Posts {
     id: string;
     title: string;
-    summary: string;
+    summary: string | null;
     featured_image: string;
-    published_at: string | Date;
-    views_count: number;
-    read_time: number;
+    published_at: string;
+    created_at: string;
+    updated_at: string;
+    read_time: string;
 }
 
 export interface Post {
@@ -26,27 +34,34 @@ export interface Post {
     title: string;
     summary: string;
     body: string;
-    featured_image?: string;
-    featured_image_caption: string;
+    featured_image: string;
+    featured_image_caption: string | null;
     user_id: string;
-    meta: Meta;
-    published_at: Date | string;
-    read_time: number;
+    published_at: string;
+    meta: {
+        description: string;
+        title: string;
+        canonical_link: string;
+    };
+    created_at: string;
+    updated_at: string;
+    deleted_at: string | null;
+    read_time: string;
     tags: {
         name: string;
         slug: string;
         pivot: {
             post_id: string;
-            tag_id: string
-        }
+            tag_id: string;
+        };
     }[];
     topic: {
         name: string;
         slug: string;
         pivot: {
             post_id: string;
-            topic_id: string
-        }
+            topic_id: string;
+        };
     }[];
 }
 
@@ -71,11 +86,26 @@ export interface Users {
     id: string;
     name: string;
     email: string;
-    avatar: string | null;
-    role: USERS;
-    posts_count: number;
+    username: string;
+    summary: string | null;
+    avatar: {
+        dark_mode: string | null;
+        digest: string | null;
+        locale: string;
+        role: number;
+        created_at: string;
+        updated_at: string;
+        deleted_at: string | null;
+        posts_count: string;
+        default_avatar: {
+            default_locale: string;
+        };
+    };
+    locale: string;
+    role: number;
+    created_at: string;
+    updated_at: string;
+    deleted_at: string | null;
+    posts_count: string;
     default_avatar: string;
-    created_at: string | Date;
-    updated_at: string | Date;
-    deleted_at: string | Date | null
 }

@@ -6,7 +6,7 @@ export default function Footer() {
             <div className="container mx-auto px-4 py-12">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div>
-                        <h3 className="text-xl font-bold mb-4">SVSC</h3>
+                        <h3 className="text-lg font-bold mb-4">Sexual Violence Support Centre</h3>
                         <p className="text-gray-300">
                             Empowering survivors of sexual violence across Uzbekistan with support, healing, and hope.
                         </p>

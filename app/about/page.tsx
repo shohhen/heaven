@@ -1,5 +1,39 @@
 // src/app/about/page.tsx
 import Image from 'next/image';
+import image from '@/public/images/about.jpg'
+import about1 from '@/public/images/about1.jpg'
+import about2 from '@/public/images/about2.jpg'
+import about3 from '@/public/images/about3.jpg'
+import about4 from '@/public/images/about4.jpg'
+import about5 from '@/public/images/about5.jpg'
+
+const galleryImages = [
+    {
+        src: about1,
+        alt: "Support group session",
+        caption: "Weekly support group meetings"
+    },
+    {
+        src: about2,
+        alt: "Yoga class",
+        caption: "Healing through movement"
+    },
+    {
+        src: about3,
+        alt: "Art therapy session",
+        caption: "Express and heal through art"
+    },
+    {
+        src: about4,
+        alt: "Community event",
+        caption: "Building stronger together"
+    },
+    {
+        src: about5,
+        alt: "Counseling session",
+        caption: "Professional support"
+    },
+];
 
 export default function AboutPage() {
     return (
@@ -12,7 +46,7 @@ export default function AboutPage() {
                         <div className="lg:w-1/2">
                             <div className="relative h-[400px] w-full rounded-xl overflow-hidden">
                                 <Image
-                                    src="/api/placeholder/800/600"
+                                    src={(image as string)}
                                     alt="Our mission"
                                     fill
                                     className="object-cover"
@@ -77,40 +111,63 @@ export default function AboutPage() {
                 </section>
 
                 {/* Team Section */}
-                <section>
-                    <h2 className="text-3xl font-bold text-center mb-12">Our Team</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {[
-                            {
-                                name: "Dr. Sarah Johnson",
-                                role: "Clinical Director",
-                                image: "/api/placeholder/400/400"
-                            },
-                            {
-                                name: "Aisha Karimova",
-                                role: "Legal Advocate",
-                                image: "/api/placeholder/400/400"
-                            },
-                            {
-                                name: "Maria Lee",
-                                role: "Wellness Coordinator",
-                                image: "/api/placeholder/400/400"
-                            }
-                        ].map((member, index) => (
-                            <div
-                                key={index}
-                                className="text-center"
-                            >
-                                <div className="relative h-48 w-48 mx-auto mb-4 rounded-full overflow-hidden">
+                {/*<section className='mb-20'>*/}
+                {/*    <h2 className="text-3xl font-bold text-center mb-12">Our Team</h2>*/}
+                {/*    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">*/}
+                {/*        {[*/}
+                {/*            {*/}
+                {/*                name: "Dr. Sarah Johnson",*/}
+                {/*                role: "Clinical Director",*/}
+                {/*                image: "/api/placeholder/400/400"*/}
+                {/*            },*/}
+                {/*            {*/}
+                {/*                name: "Aisha Karimova",*/}
+                {/*                role: "Legal Advocate",*/}
+                {/*                image: "/api/placeholder/400/400"*/}
+                {/*            },*/}
+                {/*            {*/}
+                {/*                name: "Maria Lee",*/}
+                {/*                role: "Wellness Coordinator",*/}
+                {/*                image: "/api/placeholder/400/400"*/}
+                {/*            }*/}
+                {/*        ].map((member, index) => (*/}
+                {/*            <div*/}
+                {/*                key={index}*/}
+                {/*                className="text-center"*/}
+                {/*            >*/}
+                {/*                <div className="relative h-48 w-48 mx-auto mb-4 rounded-full overflow-hidden">*/}
+                {/*                    <Image*/}
+                {/*                        src={member.image}*/}
+                {/*                        alt={member.name}*/}
+                {/*                        fill*/}
+                {/*                        className="object-cover"*/}
+                {/*                    />*/}
+                {/*                </div>*/}
+                {/*                <h3 className="text-xl font-semibold mb-2">{member.name}</h3>*/}
+                {/*                <p className="text-gray-600">{member.role}</p>*/}
+                {/*            </div>*/}
+                {/*        ))}*/}
+                {/*    </div>*/}
+                {/*</section>*/}
+                <section className="mb-20">
+                    <h2 className="text-3xl font-bold text-center mb-12">Our Impact</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {galleryImages.map((image, index) => (
+                            <div key={index} className="group relative overflow-hidden rounded-xl">
+                                <div className="relative h-64 w-full">
                                     <Image
-                                        src={member.image}
-                                        alt={member.name}
+                                        src={ image.src as string }
+                                        alt={image.alt}
                                         fill
-                                        className="object-cover"
+                                        className="object-cover transition-transform duration-300 group-hover:scale-105"
                                     />
+                                    <div
+                                        className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                                        <p className="text-white p-4 text-lg font-medium">
+                                            {image.caption}
+                                        </p>
+                                    </div>
                                 </div>
-                                <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
-                                <p className="text-gray-600">{member.role}</p>
                             </div>
                         ))}
                     </div>

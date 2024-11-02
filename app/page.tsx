@@ -1,6 +1,29 @@
 // src/app/page.tsx
 import Image from 'next/image';
 import Link from 'next/link';
+import image from '@/public/images/hero.jpg'
+import React from "react";
+import PartnerBlock from "@/app/components/home/partners";
+
+const services = [
+  {
+    title: "Psychological Support",
+    description: "Professional counseling and mental health services for survivors.",
+    icon: "🫂"
+  },
+  {
+    title: "Legal Assistance",
+    description: "Expert legal guidance and advocacy for justice.",
+    icon: "⚖️"
+  },
+  {
+    title: "Healing Programs",
+    description: "Yoga, pilates, and dance classes for physical and emotional well-being.",
+    icon: "🧘‍♀️"
+  }
+]
+
+
 
 export default function HomePage() {
   return (
@@ -34,7 +57,7 @@ export default function HomePage() {
               <div className="lg:w-1/2">
                 <div className="relative h-[400px] w-full rounded-xl overflow-hidden">
                   <Image
-                      src="/api/placeholder/800/600"
+                      src={image as string}
                       alt="Supporting community"
                       fill
                       className="object-cover"
@@ -50,23 +73,7 @@ export default function HomePage() {
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  title: "Psychological Support",
-                  description: "Professional counseling and mental health services for survivors.",
-                  icon: "🫂"
-                },
-                {
-                  title: "Legal Assistance",
-                  description: "Expert legal guidance and advocacy for justice.",
-                  icon: "⚖️"
-                },
-                {
-                  title: "Healing Programs",
-                  description: "Yoga, pilates, and dance classes for physical and emotional well-being.",
-                  icon: "🧘‍♀️"
-                }
-              ].map((service, index) => (
+              {services.map((service, index) => (
                   <div
                       key={index}
                       className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition"
@@ -90,6 +97,12 @@ export default function HomePage() {
               We believe that everyone in Uzbekistan deserves safety, dignity, and the
               opportunity to lead a life free from violence.
             </p>
+          </div>
+        </section>
+        <section className='py-20'>
+          <div className='container mx-auto px-4 text-center relative'>
+            <h2 className='text-3xl font-bold mb-8'>Our Partners</h2>
+              <PartnerBlock />
           </div>
         </section>
       </main>
