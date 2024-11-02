@@ -26,6 +26,8 @@ const services = [
 
 
 export default function HomePage() {
+  const imageUrl: string  = image as unknown as string;
+
   return (
       <main>
         {/* Hero Section */}
@@ -57,7 +59,7 @@ export default function HomePage() {
               <div className="lg:w-1/2">
                 <div className="relative h-[400px] w-full rounded-xl overflow-hidden">
                   <Image
-                      src={image as string}
+                      src={imageUrl}
                       alt="Supporting community"
                       fill
                       className="object-cover"

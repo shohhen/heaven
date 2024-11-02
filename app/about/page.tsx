@@ -7,29 +7,36 @@ import about3 from '@/app/assets/about3.jpg'
 import about4 from '@/app/assets/about4.jpg'
 import about5 from '@/app/assets/about5.jpg'
 
+const HERO = image as string
+const ABOUT1 = about1 as string
+const ABOUT2 = about2 as string
+const ABOUT3 = about3 as string
+const ABOUT4 = about4 as string
+const ABOUT5 = about5 as string
+
 const galleryImages = [
     {
-        src: about1,
+        src: ABOUT1,
         alt: "Support group session",
         caption: "Weekly support group meetings"
     },
     {
-        src: about2,
+        src: ABOUT2,
         alt: "Yoga class",
         caption: "Healing through movement"
     },
     {
-        src: about3,
+        src: ABOUT3,
         alt: "Art therapy session",
         caption: "Express and heal through art"
     },
     {
-        src: about4,
+        src: ABOUT4,
         alt: "Community event",
         caption: "Building stronger together"
     },
     {
-        src: about5,
+        src: ABOUT5,
         alt: "Counseling session",
         caption: "Professional support"
     },
@@ -46,7 +53,7 @@ export default function AboutPage() {
                         <div className="lg:w-1/2">
                             <div className="relative h-[400px] w-full rounded-xl overflow-hidden">
                                 <Image
-                                    src={(image as string)}
+                                    src={HERO}
                                     alt="Our mission"
                                     fill
                                     className="object-cover"
@@ -156,7 +163,7 @@ export default function AboutPage() {
                             <div key={index} className="group relative overflow-hidden rounded-xl">
                                 <div className="relative h-64 w-full">
                                     <Image
-                                        src={ image.src as string }
+                                        src={image.src}
                                         alt={image.alt}
                                         fill
                                         className="object-cover transition-transform duration-300 group-hover:scale-105"

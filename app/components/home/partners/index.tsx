@@ -6,12 +6,16 @@ import partnerImage4 from "@/public/images/image4.jpg";
 
 import Image from 'next/image';
 
+const PARTNER1 = partnerImage1 as string
+const PARTNER2 = partnerImage2 as string
+const PARTNER3 = partnerImage3 as string
+const PARTNER4 = partnerImage4 as string
 
 const slides = [
-    partnerImage1,
-    partnerImage2,
-    partnerImage3,
-    partnerImage4,
+    PARTNER1,
+    PARTNER2,
+    PARTNER3,
+    PARTNER4,
 ];
 
 const PartnerBlock: React.FC = () => {
@@ -24,8 +28,8 @@ const PartnerBlock: React.FC = () => {
                         className="flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 p-4"
                     >
                         <Image
-                            src={partner as string}
-                            alt={partner as string}
+                            src={partner}
+                            alt={partner}
                             className="max-h-24 max-w-full object-contain"
                         />
                     </div>
