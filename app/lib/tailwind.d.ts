@@ -1,26 +1,28 @@
 
-// import { Config } from 'tailwindcss'
-
 declare module 'tailwindcss/types/config' {
     export interface ThemeConfig {
         extend?: {
             colors?: {
-                primary?: {
+                primary: {
                     light: string
                     DEFAULT: string
                     dark: string
                 }
-                secondary?: {
+                secondary: {
                     light: string
                     DEFAULT: string
                     dark: string
                 }
             }
             fontFamily?: {
-                sans?: string[]
-                heading?: string[]
+                sans: string[]
+                heading: string[]
+            }
+            borderRadius?: {
+                lg: string
+                md: string
+                sm: string
             }
         }
     }
 }
-
