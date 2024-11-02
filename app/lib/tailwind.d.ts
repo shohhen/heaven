@@ -1,8 +1,8 @@
 
-import { Config } from 'tailwindcss'
+// import { Config } from 'tailwindcss'
 
 declare module 'tailwindcss/types/config' {
-    interface ThemeConfig {
+    export interface ThemeConfig {
         extend?: {
             colors?: {
                 primary?: {
