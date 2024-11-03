@@ -52,7 +52,7 @@ export default function PostHeader({ post, author }: PostHeaderProps) {
                         {formatDate(post.published_at)}
                     </time>
                     <span>·</span>
-                    <span>{post.read_time} min read</span>
+                    <span>{post.read_time}</span>
                 </div>
             </div>
 

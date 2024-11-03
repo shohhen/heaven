@@ -36,7 +36,7 @@ export default function BlogCard({ post }: BlogCardProps) {
                 <div className="flex items-center justify-between text-sm text-gray-500">
                     <div className="flex items-center">
                         <span className="mr-4">{formattedDate}</span>
-                        <span>{post.read_time} min read</span>
+                        <span>{post.read_time}</span>
                     </div>
                 </div>
             </div>
