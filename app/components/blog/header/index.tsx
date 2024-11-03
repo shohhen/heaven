@@ -5,6 +5,7 @@ import { formatDate } from '@/app/lib/utils';
 interface PostHeaderProps {
     post: Post;
     author: Users;
+    url: string;  // We'll keep the URL prop in case we need it for other purposes
 }
 
 export default function PostHeader({ post, author }: PostHeaderProps) {
@@ -16,7 +17,7 @@ export default function PostHeader({ post, author }: PostHeaderProps) {
                 <div className="mb-8 relative aspect-video w-full overflow-hidden rounded-lg">
                     <Image
                         src={post.featured_image}
-                        alt={post.title}
+                        alt={post.featured_image_caption || post.title}
                         fill
                         className="object-cover"
                         priority
@@ -32,11 +33,11 @@ export default function PostHeader({ post, author }: PostHeaderProps) {
             <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
 
             <div className="flex justify-between items-center gap-4 text-gray-600">
-                <div className="flex  items-center gap-2">
+                <div className="flex items-center gap-2">
                     <div className="relative w-10 h-10 overflow-hidden rounded-full">
                         <Image
                             src={avatarUrl}
-                            alt={author.name}
+                            alt={`${author.name}'s profile picture`}
                             fill
                             className="object-cover"
                         />
