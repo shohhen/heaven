@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
                 height: 630,
             }] : [],
             siteName: 'SVSC',
-            url: `https://svsc.uz/blog/${post.slug}`,
+            url: `https://svsc.uz/blog/${post.id}`,
         },
         twitter: {
             card: 'summary_large_image',
