@@ -22,6 +22,7 @@ export interface Posts {
     title: string;
     summary: string | null;
     featured_image: string;
+    user_id: string
     published_at: string;
     created_at: string;
     updated_at: string;
