@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             'max-snippet': -1,
             'max-video-preview': -1,
         },
-        keywords: `${post.tags[0]}, ${post.topic}`, // Add relevant keywords
+        keywords: `${post.tags[0]}, ${post.topic}, ${post.title}`, // Add relevant keywords
         verification: {
             google: 'google707e00d571520721.html',
         },
