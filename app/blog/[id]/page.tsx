@@ -12,64 +12,69 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const resolvedParams = await params;
-    const post = await getPostById(resolvedParams.id);
-
-    if (!post) {
-        return {
-            title: 'Post Not Found | SVSC'
-        };
-    }
-
-    // Fetch author data for enhanced metadata
-    const author = await getUserById(post.user_id);
-    const authorName = author?.name || 'SVSC';
+    const post = await getPostById(resolvedParams.id)
+    const author = await getUserById(post?.user_id as string)
 
     return {
-        title: `${post.title} | SVSC`,
-        description: post.meta.description,
-        authors: [{ name: authorName }],
+        title: post?.title,
+        description: post?.summary,
         openGraph: {
-            title: post.meta.title,
-            description: post.meta.description,
+            title: post?.title,
+            description: post?.summary,
             type: 'article',
-            publishedTime: post.published_at,
-            authors: [authorName],
-            images: post.featured_image ? [{
-                url: post.featured_image,
-                alt: post.title,
-                width: 1200,
-                height: 630,
-            }] : [],
-            siteName: 'SVSC',
-            url: `https://svsc.uz/blog/${post.id}`,
+            publishedTime: post?.published_at,
+            authors: [author?.name],
+            images: [
+                {
+                    url: post?.featured_image || 'https://svsc.uz/default-blog-image.jpg',
+                    width: 1200,
+                    height: 630,
+                    alt: post?.title,
+                },
+            ],
         },
         twitter: {
             card: 'summary_large_image',
-            title: post.meta.title,
-            description: post.meta.description,
-            images: post.featured_image ? [post.featured_image] : [],
-            creator: author?.username || '@svsc',
+            title: post?.title,
+            description: post?.summary,
+            images: [post?.featured_image || 'https://svsc.uz/default-blog-image.jpg'],
         },
-        alternates: {
-            canonical: post.meta.canonical_link
+    }
+}
+
+// Article schema for blog posts
+function generateArticleSchema(post, author) {
+    return {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: post.title,
+        description: post.summary,
+        author: {
+            '@type': 'Person',
+            name: author.name,
         },
-        robots: {
-            index: true,
-            follow: true,
-            'max-image-preview': 'large',
-            'max-snippet': -1,
-            'max-video-preview': -1,
+        datePublished: post.published_at,
+        dateModified: post.updated_at || post.published_at,
+        image: post.image || 'https://svsc.uz/default-blog-image.jpg',
+        publisher: {
+            '@type': 'Organization',
+            name: 'SVSC',
+            logo: {
+                '@type': 'ImageObject',
+                url: 'https://svsc.uz/logo.png',
+            },
         },
-        keywords: `${post.tags[0]}, ${post.topic}, ${post.title}`, // Add relevant keywords
-        verification: {
-            google: 'google707e00d571520721.html',
+        mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': `https://svsc.uz/blog/${post.id}`,
         },
-    };
+        keywords: post.topic?.map(t => t.name).join(', '),
+    }
 }
 
 export default async function BlogPostPage({ params }: Props) {
     const resolvedParams = await params;
-    const post = await getPostById(resolvedParams.id);
+    const post = await getPostById(resolvedParams.id)
 
     if (!post) {
         notFound();
@@ -87,32 +92,7 @@ export default async function BlogPostPage({ params }: Props) {
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{
-                        __html: JSON.stringify({
-                            "@context": "https://schema.org",
-                            "@type": "BlogPosting",
-                            "headline": post.title,
-                            "image": post.featured_image ? [post.featured_image] : [],
-                            "datePublished": post.published_at,
-                            "dateModified": post.updated_at || post.published_at,
-                            "author": [{
-                                "@type": "Person",
-                                "name": author.name,
-                                "url": `https://svsc.uz/author/${author.username}`
-                            }],
-                            "publisher": {
-                                "@type": "Organization",
-                                "name": "SVSC",
-                                "logo": {
-                                    "@type": "ImageObject",
-                                    "url": "https://svsc.uz/logo.png" // Update with your actual logo URL
-                                }
-                            },
-                            "description": post.meta.description,
-                            "mainEntityOfPage": {
-                                "@type": "WebPage",
-                                "@id": `https://svsc.uz/blog/${post.slug}`
-                            }
-                        })
+                        __html: JSON.stringify(generateArticleSchema(post, author)),
                     }}
                 />
                 <PostHeader post={post} author={author} url={`https://svsc.uz/blog/${post.id}`} />
