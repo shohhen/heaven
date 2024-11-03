@@ -1,0 +1,5 @@
+// Add a robots.txt file in your public folder
+User-agent: *
+Allow: /
+Sitemap: https://svsc.uz/sitemap.xml
+

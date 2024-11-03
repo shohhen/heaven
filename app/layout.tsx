@@ -7,7 +7,7 @@ import '@/app/styles/globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'SVSC - Supporting Survivors in Uzbekistan',
+  title: 'SVSC - Sexual Violence Support Center in Uzbekistan',
   description: 'Empowering survivors of sexual violence across Uzbekistan with support, healing, and hope.'
 };
 
