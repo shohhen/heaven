@@ -36,7 +36,7 @@ export default function PostHeader({ post, author }: PostHeaderProps) {
                 <div className="flex items-center gap-2">
                     <div className="relative w-10 h-10 overflow-hidden rounded-full">
                         <Image
-                            src={avatarUrl as string}
+                            src={avatarUrl}
                             alt={`${author.name}'s profile picture`}
                             fill
                             className="object-cover"

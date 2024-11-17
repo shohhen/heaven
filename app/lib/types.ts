@@ -89,19 +89,7 @@ export interface Users {
     email: string;
     username: string;
     summary: string | null;
-    avatar: {
-        dark_mode: string | null;
-        digest: string | null;
-        locale: string;
-        role: number;
-        created_at: string;
-        updated_at: string;
-        deleted_at: string | null;
-        posts_count: string;
-        default_avatar: {
-            default_locale: string;
-        };
-    };
+    avatar: string;
     locale: string;
     role: number;
     created_at: string;
