@@ -33,12 +33,12 @@ export default function BlogCard({ post }: BlogCardProps) {
                     </h2>
                 </Link>
                 <p className="text-gray-600 mb-4 line-clamp-2">{post.summary}</p>
-                <div className="flex items-center justify-between text-sm text-gray-500">
-                    <div className="flex items-center">
-                        <span className="mr-4">{formattedDate}</span>
-                        <span>{post.read_time}</span>
-                    </div>
-                </div>
+                {/*<div className="flex items-center justify-between text-sm text-gray-500">*/}
+                {/*    <div className="flex items-center">*/}
+                {/*        <span className="mr-4">{formattedDate}</span>*/}
+                {/*        <span>{post.read_time}</span>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
             </div>
         </article>
     );
