@@ -8,11 +8,11 @@ interface BlogCardProps {
 
 export default function BlogCard({ post }: BlogCardProps) {
     // Format date
-    const formattedDate = new Date(post.published_at).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
+    // const formattedDate = new Date(post.published_at).toLocaleDateString('en-US', {
+    //     year: 'numeric',
+    //     month: 'long',
+    //     day: 'numeric'
+    // });
 
     return (
         <article className="bg-white rounded-xl shadow-sm hover:shadow-md transition overflow-hidden">
