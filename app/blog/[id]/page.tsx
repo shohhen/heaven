@@ -3,6 +3,7 @@ import { getPostById, getUserById } from '@/app/lib/api';
 import PostHeader from '@/app/components/blog/header';
 import PostContent from "@/app/components/blog/content";
 import { notFound } from 'next/navigation';
+import {Post, Users} from "@/app/lib/types";
 
 interface Props {
     params: Promise<{
@@ -14,6 +15,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const resolvedParams = await params;
     const post = await getPostById(resolvedParams.id)
     const author = await getUserById(post?.user_id as string)
+    if (!author) {
+        throw new Error('Failed to load author information');
+    }
+
 
     return {
         title: post?.title,
@@ -23,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             description: post?.summary,
             type: 'article',
             publishedTime: post?.published_at,
-            authors: [author?.name],
+            authors: [author.name],
             images: [
                 {
                     url: post?.featured_image || 'https://svsc.uz/default-blog-image.jpg',
@@ -43,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 // Article schema for blog posts
-function generateArticleSchema(post, author) {
+function generateArticleSchema(post: Post, author: Users) {
     return {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
@@ -55,7 +60,7 @@ function generateArticleSchema(post, author) {
         },
         datePublished: post.published_at,
         dateModified: post.updated_at || post.published_at,
-        image: post.image || 'https://svsc.uz/default-blog-image.jpg',
+        image: post.featured_image || 'https://svsc.uz/default-blog-image.jpg',
         publisher: {
             '@type': 'Organization',
             name: 'SVSC',

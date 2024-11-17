@@ -1,6 +1,5 @@
 // app/sitemap.ts
 import { getAllPosts } from '@/app/lib/api'
-import { MetadataRoute } from 'next'
 
 export default async function sitemap(): Promise<({
     lastModified: string;
@@ -37,15 +36,5 @@ export default async function sitemap(): Promise<({
             priority: 0.8
         },
         ...postUrls
-    ]
-}
-
-// app/sitemap-index.ts
-export default async function generateSitemapIndex(): Promise<MetadataRoute.Sitemap> {
-    return [
-        {
-            url: 'https://svsc.uz/sitemap.xml',
-            lastModified: new Date().toISOString(),
-        },
     ]
 }
