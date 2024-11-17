@@ -9,7 +9,7 @@ interface PostHeaderProps {
 }
 
 export default function PostHeader({ post, author }: PostHeaderProps) {
-    const avatarUrl = author.avatar?.dark_mode || author.default_avatar;
+    const avatarUrl = author.avatar;
 
     return (
         <header className="mb-8">
@@ -36,7 +36,7 @@ export default function PostHeader({ post, author }: PostHeaderProps) {
                 <div className="flex items-center gap-2">
                     <div className="relative w-10 h-10 overflow-hidden rounded-full">
                         <Image
-                            src={avatarUrl}
+                            src={avatarUrl as string}
                             alt={`${author.name}'s profile picture`}
                             fill
                             className="object-cover"
